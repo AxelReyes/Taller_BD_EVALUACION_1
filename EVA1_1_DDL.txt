@@ -1,0 +1,403 @@
+Microsoft Windows [Versión 10.0.19044.2130]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\hp>"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\MySQL\MySQL Shell.lnk"
+MySQL Shell 8.0.32
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > /help
+SyntaxError: Invalid regular expression: missing /
+ MySQL  JS > \help
+The Shell Help is organized in categories and topics. To get help for a
+specific category or topic use: \? <pattern>
+
+The <pattern> argument should be the name of a category or a topic.
+
+The pattern is a filter to identify topics for which help is required, it can
+use the following wildcards:
+
+- ? matches any single character.
+- * matches any character sequence.
+
+The following are the main help categories:
+
+ - AdminAPI       The AdminAPI is an API that enables configuring and managing
+                  InnoDB Clusters, ReplicaSets, ClusterSets, among other
+                  things.
+ - Shell Commands Provides details about the available built-in shell commands.
+ - ShellAPI       Contains information about the shell and util global objects
+                  as well as the mysql module that enables executing SQL on
+                  MySQL Servers.
+ - SQL Syntax     Entry point to retrieve syntax help on SQL statements.
+ - X DevAPI       Details the mysqlx module as well as the capabilities of the
+                  X DevAPI which enable working with MySQL as a Document Store
+
+The available topics include:
+
+- The dba global object and the classes available at the AdminAPI.
+- The mysqlx module and the classes available at the X DevAPI.
+- The mysql module and the global objects and classes available at the
+  ShellAPI.
+- The functions and properties of the classes exposed by the APIs.
+- The available shell commands.
+- Any word that is part of an SQL statement.
+- Command Line - invoking built-in shell functions without entering interactive
+  mode.
+
+SHELL COMMANDS
+
+The shell commands allow executing specific operations including updating the
+shell configuration.
+
+The following shell commands are available:
+
+ - \                   Start multi-line input when in SQL mode.
+ - \connect    (\c)    Connects the shell to a MySQL server and assigns the
+                       global session.
+ - \disconnect         Disconnects the global session.
+ - \edit       (\e)    Launch a system editor to edit a command to be executed.
+ - \exit               Exits the MySQL Shell, same as \quit.
+ - \help       (\?,\h) Prints help information about a specific topic.
+ - \history            View and edit command line history.
+ - \js                 Switches to JavaScript processing mode.
+ - \nopager            Disables the current pager.
+ - \nowarnings (\w)    Don't show warnings after every statement.
+ - \option             Allows working with the available shell options.
+ - \pager      (\P)    Sets the current pager.
+ - \py                 Switches to Python processing mode.
+ - \quit       (\q)    Exits the MySQL Shell.
+ - \reconnect          Reconnects the global session.
+ - \rehash             Refresh the autocompletion cache.
+ - \show               Executes the given report with provided options and
+                       arguments.
+ - \source     (\.)    Loads and executes a script from a file.
+ - \sql                Executes SQL statement or switches to SQL processing
+                       mode when no statement is given.
+ - \status     (\s)    Print information about the current global session.
+ - \system     (\!)    Execute a system shell command.
+ - \use        (\u)    Sets the active schema.
+ - \warnings   (\W)    Show warnings after every statement.
+ - \watch              Executes the given report with provided options and
+                       arguments in a loop.
+
+GLOBAL OBJECTS
+
+The following modules and objects are ready for use when the shell starts:
+
+ - dba     Used for InnoDB Cluster, ReplicaSet, and ClusterSet administration.
+ - mysql   Support for connecting to MySQL servers using the classic MySQL
+           protocol.
+ - mysqlx  Used to work with X Protocol sessions using the MySQL X DevAPI.
+ - os      Gives access to functions which allow to interact with the operating
+           system.
+ - plugins Plugin to manage MySQL Shell plugins
+ - shell   Gives access to general purpose functions and properties.
+ - sys     Gives access to system specific parameters.
+ - util    Global object that groups miscellaneous tools like upgrade checker
+           and JSON import.
+
+For additional information on these global objects use: <object>.help()
+
+EXAMPLES
+\? AdminAPI
+      Displays information about the AdminAPI.
+
+\? \connect
+      Displays usage details for the \connect command.
+
+\? checkInstanceConfiguration
+      Displays usage details for the dba.checkInstanceConfiguration function.
+
+\? sql syntax
+      Displays the main SQL help categories.
+ MySQL  JS > \connect
+\connect [--mx|--mysqlx|--mc|--mysql] [--ssh <sshuri>] <URI>
+ MySQL  JS > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): n
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.32 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  JS > show database:
+SyntaxError: Unexpected identifier
+ MySQL  localhost:3306 ssl  JS > show database;
+SyntaxError: Unexpected identifier
+ MySQL  localhost:3306 ssl  JS > show databases;
+SyntaxError: Unexpected identifier
+ MySQL  localhost:3306 ssl  JS > Show databases;
+SyntaxError: Unexpected identifier
+ MySQL  localhost:3306 ssl  JS > show databases
+SyntaxError: Unexpected identifier
+ MySQL  localhost:3306 ssl  JS > show database
+SyntaxError: Unexpected identifier
+ MySQL  localhost:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+Fetching global names for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  SQL > show database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  localhost:3306 ssl  SQL > show databases
+                               -> show databases;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+ MySQL  localhost:3306 ssl  SQL > show database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  localhost:3306 ssl  SQL > Show database:
+                               -> show databases;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database:
+show databases' at line 1
+ MySQL  localhost:3306 ssl  SQL > show database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  localhost:3306 ssl  SQL > Show database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0512 sec)
+ MySQL  localhost:3306 ssl  SQL > create databases Ejercicio_1;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases Ejercicio_1' at line 1
+ MySQL  localhost:3306 ssl  SQL > create database Ejercicio_1
+                               -> create databases Ejercicio_1;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create databases Ejercicio_1' at line 2
+ MySQL  localhost:3306 ssl  SQL > create database Ejercicio;
+Query OK, 1 row affected (0.1433 sec)
+ MySQL  localhost:3306 ssl  SQL > show database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  localhost:3306 ssl  SQL > show databases
+                               -> show databases;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| ejercicio          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  SQL > use ejercicio;
+Default schema set to `ejercicio`.
+Fetching global names, object names from `ejercicio` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  ejercicio  SQL > show tables;
+Empty set (0.0641 sec)
+ MySQL  localhost:3306 ssl  ejercicio  SQL > drop database ejercicio;
+Query OK, 0 rows affected (0.2190 sec)
+ MySQL  localhost:3306 ssl  ejercicio  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  ejercicio  SQL > \use mysql;
+Default schema set to `mysql`.
+Fetching global names, object names from `mysql` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  mysql  SQL > show tables;
++------------------------------------------------------+
+| Tables_in_mysql                                      |
++------------------------------------------------------+
+| columns_priv                                         |
+| component                                            |
+| db                                                   |
+| default_roles                                        |
+| engine_cost                                          |
+| func                                                 |
+| general_log                                          |
+| global_grants                                        |
+| gtid_executed                                        |
+| help_category                                        |
+| help_keyword                                         |
+| help_relation                                        |
+| help_topic                                           |
+| innodb_index_stats                                   |
+| innodb_table_stats                                   |
+| ndb_binlog_index                                     |
+| password_history                                     |
+| plugin                                               |
+| procs_priv                                           |
+| proxies_priv                                         |
+| replication_asynchronous_connection_failover         |
+| replication_asynchronous_connection_failover_managed |
+| replication_group_configuration_version              |
+| replication_group_member_actions                     |
+| role_edges                                           |
+| server_cost                                          |
+| servers                                              |
+| slave_master_info                                    |
+| slave_relay_log_info                                 |
+| slave_worker_info                                    |
+| slow_log                                             |
+| tables_priv                                          |
+| time_zone                                            |
+| time_zone_leap_second                                |
+| time_zone_name                                       |
+| time_zone_transition                                 |
+| time_zone_transition_type                            |
+| user                                                 |
++------------------------------------------------------+
+38 rows in set (0.0027 sec)
+ MySQL  localhost:3306 ssl  mysql  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0012 sec)
+ MySQL  localhost:3306 ssl  mysql  SQL > create database evaluacion;
+Query OK, 1 row affected (0.0405 sec)
+ MySQL  localhost:3306 ssl  mysql  SQL > use evaluacion;
+Default schema set to `evaluacion`.
+Fetching global names, object names from `evaluacion` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  evaluacion  SQL > show tables;
+Empty set (0.0016 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > create table primera_tabla(
+                                           -> id int,
+                                           -> nombre varchar(50));
+Query OK, 0 rows affected (0.2143 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > show tables;
++----------------------+
+| Tables_in_evaluacion |
++----------------------+
+| primera_tabla        |
++----------------------+
+1 row in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > desc primera_tabla;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| nombre | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0021 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > \show databases;
+Unknown report: databases;
+ MySQL  localhost:3306 ssl  evaluacion  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| evaluacion         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > use sakila;
+Default schema set to `sakila`.
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  sakila  SQL > drop database evaluacion;
+Query OK, 1 row affected (0.1521 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > create database evaluacion;
+Query OK, 1 row affected (0.1257 sec)
+ MySQL  localhost:3306 ssl  sakila  SQL > use evaluacion
+Default schema set to `evaluacion`.
+Fetching global names, object names from `evaluacion` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  evaluacion  SQL > show tables;
+Empty set (0.0014 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > create table primera_tabla(
+                                           -> id int key,
+                                           -> nombre varchar(50));
+Query OK, 0 rows affected (0.1655 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > show tables;
++----------------------+
+| Tables_in_evaluacion |
++----------------------+
+| primera_tabla        |
++----------------------+
+1 row in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > desk primera_tabla;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desk primera_tabla' at line 1
+ MySQL  localhost:3306 ssl  evaluacion  SQL > desc primera_tabla;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | NO   | PRI | NULL    |       |
+| nombre | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  evaluacion  SQL > use world;
+Default schema set to `world`.
+Fetching global names, object names from `world` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  world  SQL > show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  world  SQL > create table wooo(id int, nombre varchar(10));
+Query OK, 0 rows affected (0.4054 sec)
+ MySQL  localhost:3306 ssl  world  SQL > show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
+| wooo            |
++-----------------+
+4 rows in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  world  SQL > desc wooo;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| nombre | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0023 sec)
+ MySQL  localhost:3306 ssl  world  SQL > drop table wooo;
+Query OK, 0 rows affected (0.1176 sec)
+ MySQL  localhost:3306 ssl  world  SQL > show tables
+                                      -> show tables;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show tables' at line 2
+ MySQL  localhost:3306 ssl  world  SQL > show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.0015 sec)
