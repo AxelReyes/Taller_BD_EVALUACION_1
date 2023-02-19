@@ -1,0 +1,240 @@
+MySQL Shell 8.0.32
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect
+\connect [--mx|--mysqlx|--mc|--mysql] [--ssh <sshuri>] <URI>
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): n
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.32 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  SQL > create database evaluacion'
+                               '> ;
+                               '> .
+                               '> ;
+                               '> asas
+                               '> \exit
+                               '> show databases;
+                               '> '
+                               -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''
+;
+.
+;
+asas
+\exit
+show databases;
+'' at line 1
+ MySQL  localhost:3306 ssl  SQL > create dabases evaluacion1;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dabases evaluacion1' at line 1
+ MySQL  localhost:3306 ssl  SQL > create databases evaluacion1;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases evaluacion1' at line 1
+ MySQL  localhost:3306 ssl  SQL > create database evaluacion1;
+Query OK, 1 row affected (0.0037 sec)
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| evaluacion1        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0011 sec)
+ MySQL  localhost:3306 ssl  SQL > use evaluacion1
+Default schema set to `evaluacion1`.
+Fetching global names, object names from `evaluacion1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc evaluacion1
+                                            -> ;
+ERROR: 1146 (42S02): Table 'evaluacion1.evaluacion1' doesn't exist
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc evaluacion1;
+ERROR: 1146 (42S02): Table 'evaluacion1.evaluacion1' doesn't exist
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > show tables evaluacion1
+                                            -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'evaluacion1' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > show tables;
+Empty set (0.0051 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create table primera_tabla;
+ERROR: 4028 (HY000): A table must have at least one visible column.
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create primera_tabla table evaluacion1;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primera_tabla table evaluacion1' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create table estudiante(
+                                            -> no_control varchar(15) not null,
+                                            -> nombre varchar(50) not null,
+                                            -> apellidos varchar(50) not null,
+                                            -> edad int not null,
+                                            -> carrera varchar(50) not null,
+                                            -> especialidad varchar(50),
+                                            -> telefono varchar(50),
+                                            -> direccion varchar(50));
+Query OK, 0 rows affected (0.0167 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > show tables;
++-----------------------+
+| Tables_in_evaluacion1 |
++-----------------------+
+| estudiante            |
++-----------------------+
+1 row in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc estudiante;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| no_control   | varchar(15) | NO   |     | NULL    |       |
+| nombre       | varchar(50) | NO   |     | NULL    |       |
+| apellidos    | varchar(50) | NO   |     | NULL    |       |
+| edad         | int         | NO   |     | NULL    |       |
+| carrera      | varchar(50) | NO   |     | NULL    |       |
+| especialidad | varchar(50) | YES  |     | NULL    |       |
+| telefono     | varchar(50) | YES  |     | NULL    |       |
+| direccion    | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+8 rows in set (0.0034 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into estudiante(nombre,apellidos,edad,carrera,especialidad,telefono,direccion)values('Axel','Reyes Valadez',22,'ISC','Sistemas de seguridad','614463124','Aurelia Aguero');
+ERROR: 1364 (HY000): Field 'no_control' doesn't have a default value
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from estudiante;
+Empty set (0.0006 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into estudiante(nombre,apellidos,edad,carrera,especialidad,telefono,direccion)values('Axel','Reyes Valadez',22,'ISC','Sistemas de seguridad','614463124','Aurelia Aguero');
+ERROR: 1364 (HY000): Field 'no_control' doesn't have a default value
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into estudiante(no_control,nombre,apellidos,edad,carrera,especialidad,telefono,direccion)values(21550156,'Axel','Reyes Valadez',22,'ISC','Sistemas de seguridad','614463124','Aurelia Aguero');
+Query OK, 1 row affected (0.0027 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from estudiante;
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| no_control | nombre | apellidos     | edad | carrera | especialidad          | telefono  | direccion      |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| 21550156   | Axel   | Reyes Valadez |   22 | ISC     | Sistemas de seguridad | 614463124 | Aurelia Aguero |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > alter table estudiante
+                                            -> modify no_control varchar(15)not null unique;
+Query OK, 0 rows affected (0.0621 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from estudiante;
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| no_control | nombre | apellidos     | edad | carrera | especialidad          | telefono  | direccion      |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| 21550156   | Axel   | Reyes Valadez |   22 | ISC     | Sistemas de seguridad | 614463124 | Aurelia Aguero |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc estudiante;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| no_control   | varchar(15) | NO   | PRI | NULL    |       |
+| nombre       | varchar(50) | NO   |     | NULL    |       |
+| apellidos    | varchar(50) | NO   |     | NULL    |       |
+| edad         | int         | NO   |     | NULL    |       |
+| carrera      | varchar(50) | NO   |     | NULL    |       |
+| especialidad | varchar(50) | YES  |     | NULL    |       |
+| telefono     | varchar(50) | YES  |     | NULL    |       |
+| direccion    | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+8 rows in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into estudiante(no_control,nombre,apellidos,edad,carrera,especialidad,telefono,direccion)values(21550156,'Axel','Reyes Valadez',22,'ISC','Sistemas de seguridad','614463124','Aurelia Aguero');
+ERROR: 1062 (23000): Duplicate entry '21550156' for key 'estudiante.no_control'
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into estudiante(no_control,nombre,apellidos,edad,carrera,especialidad,telefono,direccion)values(21550146,'Axel','Reyes Valadez',22,'ISC','Sistemas de seguridad','614463124','Aurelia Aguero');
+Query OK, 1 row affected (0.0023 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from estudiante;
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| no_control | nombre | apellidos     | edad | carrera | especialidad          | telefono  | direccion      |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| 21550146   | Axel   | Reyes Valadez |   22 | ISC     | Sistemas de seguridad | 614463124 | Aurelia Aguero |
+| 21550156   | Axel   | Reyes Valadez |   22 | ISC     | Sistemas de seguridad | 614463124 | Aurelia Aguero |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+2 rows in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select 21550156 from estudiante delete;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delete' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select 21550156 from estudiante;
++----------+
+| 21550156 |
++----------+
+| 21550156 |
+| 21550156 |
++----------+
+2 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from estudiante where no_control=21550156;
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| no_control | nombre | apellidos     | edad | carrera | especialidad          | telefono  | direccion      |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+| 21550156   | Axel   | Reyes Valadez |   22 | ISC     | Sistemas de seguridad | 614463124 | Aurelia Aguero |
++------------+--------+---------------+------+---------+-----------------------+-----------+----------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from estudiante where no_control=21550156 delete;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delete' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create tabla asignatura(
+                                            -> nombre varchar(50) not null,
+                                            -> creditos int not null,
+                                            -> semestre int not null,
+                                            -> clave varchar(10) not null primary key);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabla asignatura(
+nombre varchar(50) not null,
+creditos int not null,
+semestre i' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create tabla asignatura( nombre varchar(50) not null, creditos int not null, semestre int not null, clave varchar(10) not null primary key);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabla asignatura( nombre varchar(50) not null, creditos int not null, semestre i' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create tabla asignatura(nombre varchar(50) not null, creditos int not null, semestre int not null, clave varchar(10) not null primary key);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabla asignatura(nombre varchar(50) not null, creditos int not null, semestre in' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create tabla asignatura(nombre varchar(50) not null, creditos int not null, semestre int not null, clave varchar(10) not null primary key));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabla asignatura(nombre varchar(50) not null, creditos int not null, semestre in' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create table asignatura(nombre varchar(50) not null, creditos int not null, semestre int not null, clave varchar(10) not null primary key);
+Query OK, 0 rows affected (0.0128 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into asignatura(nombre,creditos,semestre)values('Taller de BD',4,5);
+ERROR: 1364 (HY000): Field 'clave' doesn't have a default value
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into asignatura(nombre,creditos,semestre,clave)values('Taller de BD',4,5);
+ERROR: 1136 (21S01): Column count doesn't match value count at row 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into asignatura(nombre,creditos,semestre,clave)values('Taller de BD',4,5,02942);
+Query OK, 1 row affected (0.0020 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from asignatura;
++--------------+----------+----------+-------+
+| nombre       | creditos | semestre | clave |
++--------------+----------+----------+-------+
+| Taller de BD |        4 |        5 | 2942  |
++--------------+----------+----------+-------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into asignatura(nombre,creditos,semestre,clave)values('Taller de BD',4,5,02942);
+ERROR: 1062 (23000): Duplicate entry '2942' for key 'asignatura.PRIMARY'
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > insert into asignatura(nombre,creditos,semestre,clave)values('Taller de BD',4,5,04546);
+Query OK, 1 row affected (0.0019 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from asignatura;
++--------------+----------+----------+-------+
+| nombre       | creditos | semestre | clave |
++--------------+----------+----------+-------+
+| Taller de BD |        4 |        5 | 2942  |
+| Taller de BD |        4 |        5 | 4546  |
++--------------+----------+----------+-------+
+2 rows in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > delete * from asignatura where clave=4546;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from asignatura where clave=4546' at line 1
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > delete from asignatura where clave=4546;
+Query OK, 1 row affected (0.0023 sec)
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from asignatura;
++--------------+----------+----------+-------+
+| nombre       | creditos | semestre | clave |
++--------------+----------+----------+-------+
+| Taller de BD |        4 |        5 | 2942  |
++--------------+----------+----------+-------+
+1 row in set (0.0005 sec)
